@@ -1,6 +1,6 @@
 <template>
-  <CharacterTitle title="Capitulo uno" />
-  <q-page class="flex flex-center"> ONE </q-page>
+  <CharacterTitle title="Capitulo diez" />
+  <q-page class="flex flex-center"> 10 </q-page>
 </template>
 
 <script setup>

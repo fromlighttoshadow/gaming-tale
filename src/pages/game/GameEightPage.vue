@@ -1,13 +1,13 @@
 <template>
-  <CharacterTitle title="Capitulo uno" />
-  <q-page class="flex flex-center"> ONE </q-page>
-  <GameFour />
+  <CharacterTitle title="Capitulo ocho" />
+  <q-page class="flex flex-center"> 8 </q-page>
+  <GameEight />
   <VictoryText />
 </template>
 
 <script setup>
 import CharacterTitle from "src/components/CharacterTitle.vue";
-import GameFour from "src/components/game/GameFour.vue";
+import GameEight from "src/components/game/GameEight.vue";
 import VictoryText from "src/components/VictoryText.vue";
 
 defineOptions({
