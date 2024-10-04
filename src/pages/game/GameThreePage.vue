@@ -11,7 +11,7 @@
 
 <script setup>
 import CharacterTitle from "src/components/CharacterTitle.vue";
-import GameThee from "src/components/game/GameThee.vue";
+import GameThee from "src/components/game/GameThree.vue";
 import VictoryText from "src/components/VictoryText.vue";
 
 defineOptions({
