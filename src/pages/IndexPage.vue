@@ -15,7 +15,7 @@ defineOptions({
 </script>
 <style>
 .bg-image {
-  background-image: url(..\..\public\background-2.png);
+  background-image: url(../../public/background-2.png);
   background-repeat: no-repeat;
   /*background-size: contain;*/
 }
