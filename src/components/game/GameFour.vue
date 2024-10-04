@@ -1,53 +1,118 @@
 <template>
-  <div class="row">
-    <div class="col">
-      <button type="button" title="Eraser" onclick="erase()" class="btn">
-        <i class="fa-solid fa-eraser"></i>
+  <div>
+    <canvas ref="myCanvas" id="draw"></canvas>
+    <div class="color-controls">
+      <button class="color-btn" @click="changeColor">
+        <div :style="{ backgroundColor: color }" />
       </button>
-      <button type="button" title="Save Sketch" onclick="onSave()" class="btn">
-        <i class="fa-solid fa-floppy-disk"></i>
-      </button>
+      <div class="size-list">
+        <button
+          v-for="size in brushSizes"
+          :key="size"
+          class="size"
+          :style="{ width: size + 'px' }"
+          @click="setBrushSize(size)"
+        ></button>
+      </div>
+      <input
+        type="color"
+        id="color-picker"
+        v-model="color"
+        @change="changeColor"
+      />
+      <button @click="downloadCanvas">Descargar</button>
     </div>
   </div>
-  <div class="row">
-    <div class="col"><canvas id="canvas"></canvas></div>
-  </div>
 </template>
+
 <script setup>
-import { dom } from "quasar";
+import { ref, onMounted, onUnmounted } from "vue";
 
-var canvas = dom.getElementById("draw");
-var ctx = canvas.getContext("2d");
-let color = "#000";
-let brushthickness = 7;
-dom.querySelector(".color-btn div").style.backgroundColor = color;
+const canvas = ref(null);
+const ctx = ref(null);
+let color = ref("#000");
+let offsetX = 0;
+let offsetY = 0;
+const brushSizes = [5, 10, 15];
+const brushThickness = ref(7);
 
-//
-//https://github.com/AnshikaG0219/web-paint-final
-//
-//*************************************************************************************************
-//******************************************* RESIZE CANVAS ***************************************
-//*************************************************************************************************
+const erase = () => (ctx.value.globalCompositeOperation = "destination-out");
 
-function draw(e) {
-  if (e.buttons !== 1) return; // if mouse is not clicked, do not go further
+const resizeCanvas = () => {
+  if (canvas.value) {
+    canvas.value.width = window.innerWidth - 20;
+    canvas.value.height = window.innerHeight;
+  }
+};
 
-  ctx.beginPath(); // begin the drawing path
-  ctx.lineWidth = brushthickness; // width of line
-  ctx.lineCap = "round"; // rounded end cap
-  ctx.strokeStyle = color; // hex color of line
-  ctx.moveTo(pos.x, pos.y); // from position
+const setBrushSize = (size) => {
+  brushThickness.value = size;
+};
+
+const changeColor = () => {
+  ctx.value.strokeStyle = color.value;
+  ctx.value.globalCompositeOperation = "source-over";
+};
+
+const downloadCanvas = () => {
+  const link = document.createElement("a");
+  link.download = "sketch.png";
+  link.href = canvas.value.toDataURL();
+  link.click();
+};
+
+const setPosition = (e) => {
+  if (e.type === "touchstart" || e.type === "touchmove") {
+    offsetX = e.touches[0].clientX - canvas.value.offsetLeft;
+    offsetY = e.touches[0].clientY - canvas.value.offsetTop;
+  } else {
+    offsetX = e.clientX - canvas.value.offsetLeft;
+    offsetY = e.clientY - canvas.value.offsetTop;
+  }
+  pos.x = parseInt(offsetX);
+  pos.y = parseInt(offsetY);
+};
+
+let pos = { x: 0, y: 0 };
+
+const draw = (e) => {
+  if (!e.buttons) return; // if mouse is not clicked, do not go further
+
+  ctx.value.beginPath();
+  ctx.value.lineWidth = brushThickness.value;
+  ctx.value.lineCap = "round";
+  ctx.value.strokeStyle = color.value;
+  ctx.value.moveTo(pos.x, pos.y);
   setPosition(e);
-  ctx.lineTo(pos.x, pos.y); // to position
-  ctx.closePath();
-  ctx.stroke(); // draw it!
-}
+  ctx.value.lineTo(pos.x, pos.y);
+  ctx.value.closePath();
+  ctx.value.stroke();
+};
 
-function resize() {
-  ctx.canvas.width = window.innerWidth - 20;
-  ctx.canvas.height = window.innerHeight;
-}
+onMounted(() => {
+  canvas.value = document.getElementById("draw");
+  ctx.value = canvas.value.getContext("2d");
+  resizeCanvas();
 
-resize();
-window.addEventListener("resize", resize);
+  window.addEventListener("resize", resizeCanvas);
+  document.addEventListener("mousemove", draw);
+  document.addEventListener("mousedown", setPosition);
+  document.addEventListener("mouseenter", setPosition);
+  document.addEventListener("touchmove", draw);
+  document.addEventListener("touchend", setPosition);
+  document.addEventListener("touchstart", setPosition);
+  document
+    .getElementById("color-picker")
+    .addEventListener("change", changeColor);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", resizeCanvas);
+  document.removeEventListener("mousemove", draw);
+  document.removeEventListener("mousedown", setPosition);
+  document.removeEventListener("mouseenter", setPosition);
+  document.removeEventListener("touchmove", draw);
+  document.removeEventListener("touchend", setPosition);
+  document.removeEventListener("touchstart", setPosition);
+});
 </script>
