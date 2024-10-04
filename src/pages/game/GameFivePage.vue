@@ -1,5 +1,5 @@
 <template>
-  <CharacterTitle title="Capitulo 5" />
+  <CharacterTitle label="Capitulo 5" />
   <q-page class="flex flex-center"> 5 </q-page>
   <GameFive />
   <VictoryText />

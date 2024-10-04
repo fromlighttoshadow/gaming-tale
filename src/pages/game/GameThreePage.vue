@@ -1,5 +1,5 @@
 <template>
-  <CharacterTitle title="Capitulo tres" />
+  <CharacterTitle label="Capitulo tres" />
   <q-page class="flex flex-center"> Three </q-page>
   <div class="row">
     <div class="col"><q-img /> /* Nerea */</div>

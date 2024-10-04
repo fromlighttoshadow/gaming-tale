@@ -7,9 +7,14 @@
   </div>
 </template>
 <script setup>
+import { ref } from "vue";
+
 defineOptions({
   name: "CharacterTitle",
 });
+
+const visual = ref(true);
+
 const props = defineProps({
   title: {
     type: String,
@@ -21,6 +26,10 @@ const props = defineProps({
   },
   bodytext: {
     type: String,
+    required: true,
+  },
+  progress: {
+    type: Number,
     required: true,
   },
 });

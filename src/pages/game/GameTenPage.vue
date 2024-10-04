@@ -1,5 +1,5 @@
 <template>
-  <CharacterTitle title="Capitulo diez" />
+  <CharacterTitle label="Capitulo diez" />
   <q-page class="flex flex-center"> 10 </q-page>
 </template>
 

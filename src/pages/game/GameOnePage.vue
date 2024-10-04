@@ -1,8 +1,9 @@
 <template>
-  <CharacterTitle title="Capitulo uno" />
-  <q-page class="flex flex-center"> 1 </q-page>
-  <GameOne />
-  <VictoryText />
+  <q-page class="flex flex-center bg-image">
+    <CharacterTitle label="Capitulo uno" />
+    <GameOne />
+    <VictoryText title="" bodytext="" next="/2" :progress="1" />
+  </q-page>
 </template>
 
 <script setup>
@@ -14,3 +15,10 @@ defineOptions({
   name: "GameOnePage",
 });
 </script>
+<style>
+.bg-image {
+  background-image: url(../../public/background-2.png);
+  background-repeat: no-repeat;
+  /*background-size: contain;*/
+}
+</style>
