@@ -1,29 +1,26 @@
 <template>
   <div class="flex flex-center">
     <q-dialog :model-value="true" maximized auto-close>
-      <div class=".bg-image-chapter" :style="background"></div>
+      <div class="text-right" :style="background">
+        <q-btn :to="props.next">Next</q-btn>
+      </div>
     </q-dialog>
   </div>
 </template>
 <script setup>
 import { ref } from "vue";
 
-defineOptions({
-  name: "CharacterTitle",
-});
 const props = defineProps({
   label: {
     type: String,
     required: true,
   },
+  next: {
+    type: String,
+    required: true,
+  },
 });
-
 const background = ref(
   "background: url(" + props.label + "); background-repeat: no-repeat;"
 );
 </script>
-<style>
-.bg-image-chapter {
-  background-repeat: no-repeat;
-}
-</style>

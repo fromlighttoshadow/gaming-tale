@@ -1,4 +1,4 @@
 <template>
-  <table><th><td>1</td></th></table>
+  <img src="public\chapter-one-es.png" />
 </template>
 <script setup></script>

@@ -1,6 +1,19 @@
 // app global css in SCSS form
 
 @font-face {
-  font-family: customfont;
-  src: url(./fonts/customfont.woff);
+  font-family: KiwiSoda;
+  src: url(/fonts/KiwiSoda.woff) format("woff");
+}
+body {
+  font-family: "KiwiSoda", "Roboto", sans-serif;
+  color: adjust-color($color: #8515ba);
+}
+
+.bg-image {
+  background-image: url(/background.png);
+  background-repeat: no-repeat;
+}
+.bg-image-front {
+  background-image: url(/background-2.png);
+  background-repeat: no-repeat;
 }

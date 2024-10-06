@@ -1,16 +1,43 @@
 <template>
-  <CharacterTitle label="Capitulo nueve" />
+  <q-page class="flex flex-center">
+    <div class="row">
+      <div class="col">
+        <!-- <GameTwo /> -->
+        <img src="/chapter/chapter-nine-es.png" />
+        <!-- <VictoryText
+      title="afasfafafafafafaf"
+      bodytext="adsasdfasfasfasf"
+      next="/2"
+      :progress="'a'"
+      :ability="false"
+    /> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <q-btn flat @click="fin = true">Finalizar juego</q-btn>
+      </div>
+    </div>
+    <CharacterTitle label="/chapter-title/chapter-nine-es.png" />
+    <!-- <VictoryText /> -->
+
+    <VictoryImg v-if="fin" label="/victory/victory-nine-es.png" next="/10" />
+  </q-page>
+  <!-- <CharacterTitle label="Capitulo nueve" />
   <q-page class="flex flex-center"> 9 </q-page>
   <GameNine />
-  <VictoryText />
+  <VictoryText /> -->
 </template>
 
 <script setup>
 import CharacterTitle from "src/components/CharacterTitle.vue";
 import GameNine from "src/components/game/GameNine.vue";
+import VictoryImg from "src/components/VictoryImg.vue";
 import VictoryText from "src/components/VictoryText.vue";
+import { ref } from "vue";
 
 defineOptions({
   name: "GameNinePage",
 });
+const fin = ref(false);
 </script>
