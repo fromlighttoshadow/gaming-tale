@@ -24,6 +24,18 @@
         </div> -->
       </div>
     </div>
+    <q-dialog :model-value="true" auto-close>
+      <q-card
+        ><div class="row">
+          <div class="col">
+            <h2>
+              Si la pantalla victoria no se ve completa baja el tamaño del
+              navegador al 60%
+            </h2>
+          </div>
+        </div></q-card
+      >
+    </q-dialog>
     <q-dialog :model-value="languageDialog">
       <q-img src="/button/english-button-es.png" @click="setEnglish()" />
       <q-img src="/button/spanish-button-es.png" @click="setSpanish()" />
