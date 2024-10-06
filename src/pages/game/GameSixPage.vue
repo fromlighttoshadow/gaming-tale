@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <!-- <GameTwo /> -->
-        <img src="/chapter/chapter-six-es.png" />
+        <img :src="'/game/game-six-' + languageState + '.png'" />
         <!-- <VictoryText
       title="afasfafafafafafaf"
       bodytext="adsasdfasfasfasf"
@@ -15,15 +15,21 @@
     </div>
     <div class="row">
       <div class="col">
-        <q-btn flat @click="fin = true">Finalizar juego</q-btn>
+        <q-btn flat @click="fin = true">Continue</q-btn>
       </div>
     </div>
-    <CharacterTitle label="/chapter-title/chapter-six-es.png" />
+    <CharacterTitle
+      :label="'/chapter-title/chapter-six-' + languageState + '.png'"
+    />
     <!-- <VictoryText /> -->
 
-    <VictoryImg v-if="fin" label="/victory/victory-six-es.png" next="/7" />
+    <VictoryImg
+      v-if="fin"
+      :label="'/victory/victory-six-' + languageState + '.png'"
+      next="/7"
+    />
   </q-page>
-  <!-- <CharacterTitle label="Capitulo seis" />
+  <!-- <CharacterTitle:label="'Capitulo seis" />
   <q-page class="flex flex-center"> 6 </q-page>
   <GameSix />
   <VictoryText /> -->
@@ -34,10 +40,14 @@ import CharacterTitle from "src/components/CharacterTitle.vue";
 import GameSix from "src/components/game/GameSix.vue";
 import VictoryImg from "src/components/VictoryImg.vue";
 import VictoryText from "src/components/VictoryText.vue";
+import { useConfigStore } from "src/stores/config-store";
 import { ref } from "vue";
 
 defineOptions({
   name: "GameSixPage",
 });
 const fin = ref(false);
+const configStore = useConfigStore();
+const languageState = ref("null");
+languageState.value = configStore.language;
 </script>

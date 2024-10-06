@@ -7,22 +7,51 @@
         </div>
         <div class="row flex-center">
           <router-link to="/1"
-            ><q-img flat src="/start-es.png" width="200px" height="200px"
+            ><q-img
+              :src="'/button/start-' + languageState + '.png'"
+              width="300px"
+              height="300px"
           /></router-link>
         </div>
         <div class="row flex-center">
-          <q-img src="/language-es.png" width="200px" height="200px" />>
+          <q-img
+            :src="'/button/language-' + languageState + '.png'"
+            @click="languageDialog = true"
+          />
         </div>
-        <div class="row flex-center">
-          <q-img src="/volumen-es.png" width="200px" height="200px" />>
-        </div>
+        <!-- <div class="row flex-center">
+          <q-img src="/button/volumen-es.png" width="200px" height="200px" />
+        </div> -->
       </div>
     </div>
+    <q-dialog :model-value="languageDialog">
+      <q-img src="/button/english-button-es.png" @click="setEnglish()" />
+      <q-img src="/button/spanish-button-es.png" @click="setSpanish()" />
+    </q-dialog>
   </q-page>
 </template>
 
 <script setup>
+import { useConfigStore } from "src/stores/config-store";
+import { ref } from "vue";
+
 defineOptions({
   name: "IndexPage",
 });
+
+const languageDialog = ref(false);
+const configStore = useConfigStore();
+const languageState = ref("es");
+languageState.value = configStore.language;
+
+function setSpanish() {
+  configStore.setSpanish();
+  languageState.value = configStore.language;
+  languageDialog.value = false;
+}
+function setEnglish() {
+  configStore.setEnglish();
+  languageState.value = configStore.language;
+  languageDialog.value = false;
+}
 </script>

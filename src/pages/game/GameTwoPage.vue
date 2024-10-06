@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <!-- <GameTwo /> -->
-        <img src="/chapter/chapter-two-es.png" />
+        <img :src="'/game/game-two-' + languageState + '.png'" />
         <!-- <VictoryText
       title="afasfafafafafafaf"
       bodytext="adsasdfasfasfasf"
@@ -15,13 +15,19 @@
     </div>
     <div class="row">
       <div class="col">
-        <q-btn flat @click="fin = true">Finalizar juego</q-btn>
+        <q-btn flat @click="fin = true">Continue</q-btn>
       </div>
     </div>
-    <CharacterTitle label="/chapter-title/chapter-two-es.png" />
+    <CharacterTitle
+      :label="'/chapter-title/chapter-two-' + languageState + '.png'"
+    />
     <!-- <VictoryText /> -->
 
-    <VictoryImg v-if="fin" label="/victory/victory-two-es.png" next="/3" />
+    <VictoryImg
+      v-if="fin"
+      :label="'/victory/victory-two-' + languageState + '.png'"
+      next="/3"
+    />
   </q-page>
 </template>
 
@@ -30,10 +36,14 @@ import CharacterTitle from "src/components/CharacterTitle.vue";
 import GameTwo from "src/components/game/GameTwo.vue";
 import VictoryImg from "src/components/VictoryImg.vue";
 import VictoryText from "src/components/VictoryText.vue";
+import { useConfigStore } from "src/stores/config-store";
 import { ref } from "vue";
 
 defineOptions({
   name: "GameTwoPage",
 });
 const fin = ref(false);
+const configStore = useConfigStore();
+const languageState = ref(null);
+languageState.value = configStore.language;
 </script>
