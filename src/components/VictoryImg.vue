@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-center">
-    <q-dialog :model-value="true" maximized auto-close>
-      <div class="text-right" :style="background">
-        <q-btn :to="props.next">Next</q-btn>
+    <q-dialog :model-value="true" maximized>
+      <div class="text-right q-ma-md" :style="background">
+        <q-btn :to="props.next" size="xl"><h1>Next</h1></q-btn>
       </div>
     </q-dialog>
   </div>
@@ -23,6 +23,6 @@ const props = defineProps({
 const background = ref(
   "background: url(" +
     props.label +
-    "); background-repeat: no-repeat; background-size: cover; background-position: center; height: 100vh;"
+    "); background-repeat: no-repeat; background-size: contain; background-position: center; height: 100vh; background-color: white"
 );
 </script>

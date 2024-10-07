@@ -15,7 +15,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <q-btn flat @click="fin = true">Continue</q-btn>
+        <q-btn flat @click="fin = true" size="xl">Continue</q-btn>
       </div>
     </div>
     <CharacterTitle

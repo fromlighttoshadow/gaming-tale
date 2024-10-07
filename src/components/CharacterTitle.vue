@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-center">
     <q-dialog :model-value="true" maximized auto-close>
-      <div class=".bg-image-chapter" :style="background"></div>
+      <div :style="background"></div>
     </q-dialog>
   </div>
 </template>
@@ -24,8 +24,3 @@ const background = ref(
     "); background-repeat: no-repeat; background-size: cover; background-position: center; height: 100vh;"
 );
 </script>
-<style>
-.bg-image-chapter {
-  background-repeat: no-repeat;
-}
-</style>

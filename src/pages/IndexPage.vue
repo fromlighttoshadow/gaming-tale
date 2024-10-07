@@ -9,8 +9,8 @@
           <router-link to="/1"
             ><q-img
               :src="'/button/start-' + languageState + '.png'"
-              width="300px"
-              height="300px"
+              width="200px"
+              height="200px"
           /></router-link>
         </div>
         <div class="row flex-center">
@@ -24,7 +24,7 @@
         </div> -->
       </div>
     </div>
-    <q-dialog :model-value="true" auto-close>
+    <!-- <q-dialog :model-value="true" auto-close>
       <q-card
         ><div class="row">
           <div class="col">
@@ -35,7 +35,7 @@
           </div>
         </div></q-card
       >
-    </q-dialog>
+    </q-dialog> -->
     <q-dialog :model-value="languageDialog">
       <q-img src="/button/english-button-es.png" @click="setEnglish()" />
       <q-img src="/button/spanish-button-es.png" @click="setSpanish()" />
