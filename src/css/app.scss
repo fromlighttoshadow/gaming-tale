@@ -12,8 +12,14 @@ body {
 .bg-image {
   background-image: url(/background.png);
   background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 .bg-image-front {
   background-image: url(/background-2.png);
   background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
