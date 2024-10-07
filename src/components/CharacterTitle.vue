@@ -19,7 +19,9 @@ const props = defineProps({
 });
 
 const background = ref(
-  "background: url(" + props.label + "); background-repeat: no-repeat;"
+  "background: url(" +
+    props.label +
+    "); background-repeat: no-repeat; background-size: cover; background-position: center; height: 100vh;"
 );
 </script>
 <style>
