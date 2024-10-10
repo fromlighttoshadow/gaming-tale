@@ -1,6 +1,5 @@
 <template>
   <q-page class="flex flex-center">
-    <div class="container">
       <!-- <div class="row">
         <div class="col"><h1>Fin</h1></div>
       </div>
@@ -20,7 +19,6 @@
           <q-btn flat to="/" sixe="xl"><h1>Home</h1></q-btn>
         </div>
       </div>
-    </div>
   </q-page>
 </template>
 
