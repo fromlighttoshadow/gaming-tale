@@ -15,6 +15,11 @@
           <img :src="'/end-' + languageState + '.png'" />
         </div>
       </div>
+      <div class="row">
+        <div class="col">
+          <q-btn flat to="/" sixe="xl"><h1>Home</h1></q-btn>
+        </div>
+      </div>
     </div>
   </q-page>
 </template>
